@@ -1,0 +1,33 @@
+plugins {
+  id 'java'
+  id 'application'
+  id 'com.github.johnrengelman.shadow' version '2.0.4'
+  id 'eclipse'
+}
+
+repositories {
+  mavenLocal()
+  jcenter()
+  maven { url "https://plugins.gradle.org/m2/" }
+}
+
+version = '0.0.0'
+sourceCompatibility = '1.10'
+mainClassName = 'rws.App'
+
+dependencies {
+	compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.6'
+	compile group: 'org.jsoup', name: 'jsoup', version: '1.8.3'
+}
+
+shadowJar {
+  classifier = 'fat'
+}
+
+run {
+  args = ['run', mainClassName]
+}
+
+wrapper {
+  gradleVersion = '4.9'
+}
