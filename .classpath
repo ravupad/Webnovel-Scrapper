@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry path="bin" kind="output"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-10/"/>
-	<classpathentry sourcepath="/home/ravi/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/fluent-hc/4.5.6/e0ceaeef856d78199cbd38c2573362f9057e7485/fluent-hc-4.5.6-sources.jar" kind="lib" path="/home/ravi/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/fluent-hc/4.5.6/7f4b2ccd83078e3bb87c8ad280ec074c04c7e4a4/fluent-hc-4.5.6.jar"/>
-	<classpathentry kind="lib" path="/home/ravi/.m2/repository/org/jsoup/jsoup/1.8.3/jsoup-1.8.3.jar"/>
-	<classpathentry sourcepath="/home/ravi/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.6/bda84e42670536453ecd61ee70349c2493445994/httpclient-4.5.6-sources.jar" kind="lib" path="/home/ravi/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.6/1afe5621985efe90a92d0fbc9be86271efbe796f/httpclient-4.5.6.jar"/>
-	<classpathentry sourcepath="/home/ravi/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar" kind="lib" path="/home/ravi/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar"/>
-	<classpathentry sourcepath="/home/ravi/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.10/35dcae32cc1c3bfb62546e64b90fc6359183b3b5/httpcore-4.4.10-sources.jar" kind="lib" path="/home/ravi/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.10/acc54d9b28bdffe4bbde89ed2e4a1e86b5285e2b/httpcore-4.4.10.jar"/>
-	<classpathentry sourcepath="/home/ravi/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/11fb3d88ae7e3b757d70237064210ceb954a5a04/commons-codec-1.10-sources.jar" kind="lib" path="/home/ravi/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar"/>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
