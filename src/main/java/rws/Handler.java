@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Scanner;
+import rws.webnovel.WebnovelSource;
 import rws.wuxiaworld.WuxiaSource;
 
 public class Handler {
@@ -21,52 +22,57 @@ public class Handler {
 
 	public void selectSource() {
 		source = null;
-		System.out.println("Select source:");
 		System.out.println("1. WuxiaWorld");
 		System.out.println("2. Webnovel");
+		System.out.print("Select source: ");
 		int selection = scanner.nextInt();
 		scanner.nextLine();
-		if (selection == 1) {
+		switch (selection) {
+		case 1:
 			source = new WuxiaSource();
+			break;
+		case 2:
+			source = new WebnovelSource();
+			break;
+		default:
+			System.out.println("Wrong selection of source.");
+			source = null;
 		}
 	}
 
 	public void selectBook() {
-		System.out.print("Enter search string for book: ");
-		var search_string = scanner.nextLine();
-		var books = source.searchBook(search_string);
-		System.out.println("Select book: ");
-		int counter = 1;
-		for (var book : books) {
-			System.out.println(String.format("%d. %s", counter, book.getTitle()));
-		}
-		int selection = scanner.nextInt();
-		scanner.nextLine();
-		book = books.get(selection - 1);
+		book = source.selectBook(scanner);
 	}
 
 	public void selectChapter() {
-		System.out
-				.println("Number of chapters in book is: " + book.getChapterCount());
-		System.out.print("Select starting chapter: ");
-		String start = scanner.nextLine();
-		chapter = book.selectChapter(start);
-		System.out.print("Maximum chapters to download: ");
+		chapter = book.selectChapter(scanner);
+		System.out.print("Enter maximum chapters to download: ");
 		chapter_count = scanner.nextInt();
 		scanner.nextLine();
 	}
 
-	public void fetchChapters() throws Exception {
-		out = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream(book.getTitle() + ".md"), "UTF-8"));
-		while (chapter_count > 0) {
-			chapter_count -= 1;
-			writeChapter();
-			chapter = chapter.next();
-			if (chapter == null)
-				return;
-		}
-		out.close();
+	public void fetchChapters() {
+		try {
+			out = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(book.getTitle() + ".md"), "UTF-8"));
+			while (chapter_count > 0) {
+				chapter_count -= 1;
+				writeChapter();
+				chapter = chapter.next();
+				if (chapter == null)
+					return;
+			}
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(out != null) {
+				try {
+					out.close();
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}		
 	}
 
 	void writeChapter() throws Exception {

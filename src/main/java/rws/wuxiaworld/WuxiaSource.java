@@ -1,35 +1,19 @@
 package rws.wuxiaworld;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Scanner;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import rws.App;
-import rws.Book;
 import rws.Source;
 
 public class WuxiaSource implements Source {
-	public static final String base_url = "https://www.wuxiaworld.com";
-
-	Document chapter;	
-
-	@Override
-	public List<Book> searchBook(String name) {
-		chapter = getDocument(name);
-		var book = new WuxiaBook(chapter);
-		return Arrays.asList(book);
-	}
-
-	@Override
-	public Book selectBook(String selection) {
-		return new WuxiaBook(chapter);
-	}
+	public static final String baseUrl = "https://www.wuxiaworld.com";
 
 	public static Document getDocument(String url) {
 		try {
-			HttpGet request = new HttpGet(url);
+			HttpGet request = new HttpGet(baseUrl + url);
 			var response = App.getClient().execute(request);
 			if (response.getStatusLine().getStatusCode() != 200) {
 				return null;
@@ -39,5 +23,12 @@ public class WuxiaSource implements Source {
 		} catch (Exception ex) {
 			return null;
 		}
+	}
+
+	@Override
+	public WuxiaBook selectBook(Scanner scanner) {
+		System.out.println("Enter url of a chapter of a book: ");
+		var chapterUrl = scanner.nextLine();
+		return new WuxiaBook(chapterUrl);
 	}
 }

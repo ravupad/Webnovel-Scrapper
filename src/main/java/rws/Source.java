@@ -1,9 +1,7 @@
 package rws;
 
-import java.util.List;
+import java.util.Scanner;
 
 public interface Source {
-	List<Book> searchBook(String name);
-	
-	Book selectBook(String selection);
+	Book selectBook(Scanner scanner);
 }
