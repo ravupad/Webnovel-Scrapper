@@ -1,10 +1,10 @@
 buildscript {
-    repositories {
-			jcenter()      
-    }
-    dependencies {
-      classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'          
-    }
+	repositories {
+		jcenter()      
+	}
+	dependencies {
+  	classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'          
+	}
 }
 
 plugins {
@@ -14,32 +14,32 @@ plugins {
 }
 
 version = '0.0.0'
+mainClassName = 'rws.App'
 targetCompatibility = 1.10
 sourceCompatibility = 1.10
-mainClassName = 'rws.App'
 
 repositories {
-  mavenLocal()
-  jcenter()
-  maven { url "https://plugins.gradle.org/m2/" }
+	mavenLocal()
+	jcenter()
+	maven { url "https://plugins.gradle.org/m2/" }
 }
 
 dependencies {
 	compile 'org.apache.httpcomponents:fluent-hc:4.5.6'
-  compile 'org.jsoup:jsoup:1.8.3'
+	compile 'org.jsoup:jsoup:1.8.3'
 	compile 'com.google.code.gson:gson:2.8.5'
 }
 
 apply plugin: 'com.github.johnrengelman.shadow'
 
 shadowJar {
-  classifier = 'fat'
+	classifier = 'fat'	
 }
 
 run {
-  args = ['run', mainClassName]
+	args = ['run', mainClassName]
 }
 
 wrapper {
-  gradleVersion = '4.9'
+	gradleVersion = '4.9'
 }
