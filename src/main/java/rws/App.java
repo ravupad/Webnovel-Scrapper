@@ -28,5 +28,6 @@ public class App {
 		handler.selectBook();
 		handler.selectChapter();
 		handler.fetchChapters();
+		System.out.println("Bye");
 	}
 }

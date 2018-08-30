@@ -55,12 +55,25 @@ public class Handler {
 		try {
 			out = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream(book.getTitle() + ".md"), "UTF-8"));
-			while (chapter_count > 0) {
-				chapter_count -= 1;
+			var counter = 0;
+			var progress = 0;
+			while (counter < chapter_count) {
+				counter += 1;
 				writeChapter();
 				chapter = chapter.next();
-				if (chapter == null)
-					return;
+				progress = (counter*100)/chapter_count;
+				System.out.print("[");
+				for(int i = 0; i < 100; i++) {
+					if(i <= progress) {
+						System.out.print("=");
+					} else {
+						System.out.print(" ");
+					}
+				}
+				System.out.print("]\r");
+				if (chapter == null) {
+					return;					
+				}
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
