@@ -15,8 +15,11 @@ plugins {
 
 version = '0.0.0'
 mainClassName = 'rws.App'
-targetCompatibility = 1.10
-sourceCompatibility = 1.10
+
+compileJava {
+	targetCompatibility = 1.10
+	sourceCompatibility = 1.10	 
+}
 
 repositories {
 	mavenLocal()
