@@ -12,7 +12,8 @@ repositories {
 }
 
 version = '0.0.0'
-sourceCompatibility = '1.10'
+targetCompatibility = 1.10
+sourceCompatibility = 1.10
 mainClassName = 'rws.App'
 
 dependencies {

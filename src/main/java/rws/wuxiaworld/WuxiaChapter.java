@@ -7,9 +7,12 @@ import rws.Chapter;
 
 public class WuxiaChapter implements Chapter {
 	Document doc;
+	String title;
+	String chapterUrl;
 
-	WuxiaChapter(Document doc) {
-		this.doc = doc;
+	WuxiaChapter(String chapterUrl, String title) {
+		this.chapterUrl = chapterUrl;
+		this.title = title;
 	}
 
 	@Override
@@ -31,7 +34,21 @@ public class WuxiaChapter implements Chapter {
 		if (next.equals("#")) {
 			return null;
 		} else {
-			return new WuxiaChapter(WuxiaSource.getDocument(next));
+			var chapter = new WuxiaChapter(next, null);
+			if(!chapter.fetchChapter()) {
+				return null;
+			} else {
+				return chapter;
+			}
+		}
+	}
+	
+	public boolean fetchChapter() {
+		doc = WuxiaSource.getDocument(chapterUrl);
+		if(doc.select(".p-15 div > h4").size() == 0) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 }

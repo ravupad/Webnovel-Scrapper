@@ -27,8 +27,8 @@ public class WuxiaSource implements Source {
 
 	@Override
 	public WuxiaBook selectBook(Scanner scanner) {
-		System.out.print("Enter chpater url: ");
-		var chapterUrl = scanner.nextLine();
-		return new WuxiaBook(chapterUrl);
+		System.out.print("Enter book url (eg. /novel/against-the-gods): ");
+		var bookUrl = scanner.nextLine();
+		return new WuxiaBook(bookUrl);
 	}
 }
