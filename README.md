@@ -1,2 +1,2 @@
 # Webnovel-Scrapper
-Scraps Webnovels from popular Webnovel Sources
+Scraps Webnovels from popular sources.
