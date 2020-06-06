@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Scanner;
+
+import rws.readlightnovel.RLNSource;
 import rws.webnovel.WebnovelSource;
 import rws.wuxiaworld.WuxiaSource;
 
@@ -24,6 +26,7 @@ public class Handler {
 		source = null;
 		System.out.println("1. WuxiaWorld");
 		System.out.println("2. Webnovel");
+		System.out.println("3. ReadLightNovels");
 		System.out.print("Select source: ");
 		int selection = scanner.nextInt();
 		scanner.nextLine();
@@ -34,13 +37,16 @@ public class Handler {
 		case 2:
 			source = new WebnovelSource();
 			break;
+		case 3:
+			source = new RLNSource();
+			break;
 		default:
 			System.out.println("Wrong selection of source.");
 			source = null;
 		}
 	}
 
-	public void selectBook() {
+	public void selectBook() throws Exception {
 		book = source.selectBook(scanner);
 	}
 

@@ -9,25 +9,26 @@ import rws.Book;
 public class WuxiaBook implements Book {
 	Document doc;
 	String bookUrl;
+    List<WuxiaChapter> chapters;
 
 	public WuxiaBook(String bookUrl) {
 		this.bookUrl = bookUrl;
+        this.doc = WuxiaSource.getDocument(bookUrl);
+        this.chapters = getChapters();
 	}
 
 	@Override
 	public String getTitle() {
-		return doc.select("div.p-15 > h4").get(0).text();
+		return doc.select(".novel-top h2").get(0).text();
 	}
 
 	@Override
 	public WuxiaChapter selectChapter(Scanner scanner) {
 		try {
-			doc = WuxiaSource.getDocument(bookUrl);
-			var chapters = getChapters();
-			var counter = 0;
+            var counter = 0;
 			for(var chapter: chapters) {
 				counter += 1;
-				System.out.println(String.format("%d. %s", counter, chapter.title));				
+				System.out.println(String.format("%d. %s", counter, chapter.title));
 			}
 			System.out.print("Enter chapter to start download from: ");
 			var selection = scanner.nextInt();
@@ -46,8 +47,7 @@ public class WuxiaBook implements Book {
 
 	public List<WuxiaChapter> getChapters() {
 		return doc.select("li.chapter-item a").stream()
-				.map(element -> new WuxiaChapter(element.attr("href"),
-						element.select("span").text()))
+				.map(element -> new WuxiaChapter(element.attr("href"), element.text()))
 				.collect(Collectors.toList());
 	}
 }

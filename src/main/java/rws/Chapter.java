@@ -7,5 +7,5 @@ public interface Chapter {
 	
 	List<String> getContent();
 
-	Chapter next();
+	Chapter next() throws Exception;
 }
