@@ -48,7 +48,7 @@ public class WebnovelSource implements Source {
 		var counter = 0;
 		for(var book: books) {
 			counter += 1;
-			System.out.println(String.format("%d. %s", counter, book.getTitle()));			
+			System.out.println(String.format("%d. %s", counter, book.getBookTitle()));
 		}
 		System.out.print("Select book: ");
 		var selection = scanner.nextInt();

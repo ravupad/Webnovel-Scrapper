@@ -3,7 +3,7 @@ package rws;
 import java.util.Scanner;
 
 public interface Book {	
-	String getTitle();
+	String getBookTitle();
 	
 	Chapter selectChapter(Scanner scanner);
 }

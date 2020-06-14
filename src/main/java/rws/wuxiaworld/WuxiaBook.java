@@ -18,7 +18,7 @@ public class WuxiaBook implements Book {
 	}
 
 	@Override
-	public String getTitle() {
+	public String getBookTitle() {
 		return doc.select(".novel-top h2").get(0).text();
 	}
 

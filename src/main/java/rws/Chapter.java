@@ -3,7 +3,7 @@ package rws;
 import java.util.List;
 
 public interface Chapter {
-	String getTitle();
+	String getChapterTitle();
 	
 	List<String> getContent();
 

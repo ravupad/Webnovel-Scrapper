@@ -18,7 +18,7 @@ public class RLNChapter implements Chapter {
     }
 
     @Override
-    public String getTitle() {
+    public String getChapterTitle() {
         return doc.select(".chapter .chapter-title").text();
     }
 

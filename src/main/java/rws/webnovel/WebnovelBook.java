@@ -17,7 +17,7 @@ public class WebnovelBook implements Book {
 	String bookId;
 	
 	@Override
-	public String getTitle() {
+	public String getBookTitle() {
 		return bookName;
 	}
 
@@ -30,7 +30,7 @@ public class WebnovelBook implements Book {
 				break;
 			}
 			counter += 1;
-			System.out.println(String.format("%d. %s", counter, chapter.getTitle()));			
+			System.out.println(String.format("%d. %s", counter, chapter.getChapterTitle()));
 		}
 		System.out.print("Select index of chpater to start download from: ");
 		var selection = scanner.nextInt();

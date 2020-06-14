@@ -22,11 +22,12 @@ public class Handler {
 		scanner = new Scanner(System.in);
 	}
 
-	public void selectSource() {
+	public void selectSource() throws Exception {
 		source = null;
 		System.out.println("1. WuxiaWorld");
 		System.out.println("2. Webnovel");
 		System.out.println("3. ReadLightNovels");
+		System.out.println("4. WuxiaWorld.Co");
 		System.out.print("Select source: ");
 		int selection = scanner.nextInt();
 		scanner.nextLine();
@@ -40,9 +41,12 @@ public class Handler {
 		case 3:
 			source = new RLNSource();
 			break;
+		case 4:
+			source = new WuxiaWorldCo();
+			break;
 		default:
 			System.out.println("Wrong selection of source.");
-			source = null;
+			throw new Exception();
 		}
 	}
 
@@ -60,7 +64,7 @@ public class Handler {
 	public void fetchChapters() {
 		try {
 			out = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream(book.getTitle() + ".md"), "UTF-8"));
+					new FileOutputStream(book.getBookTitle() + ".md"), "UTF-8"));
 			var counter = 0;
 			var progress = 0;
 			while (counter < chapter_count) {
@@ -102,7 +106,7 @@ public class Handler {
 	}
 
 	void writeChapterTitle() throws Exception {
-		var title = chapter.getTitle();
+		var title = chapter.getChapterTitle();
 		out.write(title);
 		out.write("\n");
 		for (int i = 0; i < title.length(); i++) {

@@ -11,7 +11,7 @@ public class RLNBook implements Book {
     }
 
     @Override
-    public String getTitle() {
+    public String getBookTitle() {
         return chapter.getBookTitle();
     }
 

@@ -16,7 +16,7 @@ public class WuxiaChapter implements Chapter {
 	}
 
 	@Override
-	public String getTitle() {
+	public String getChapterTitle() {
 		return doc.select(".p-15 div > h4").get(0).text();
 	}
 

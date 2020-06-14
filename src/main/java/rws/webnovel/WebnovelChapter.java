@@ -28,7 +28,7 @@ public class WebnovelChapter implements Chapter {
 	}
 
 	@Override
-	public String getTitle() {
+	public String getChapterTitle() {
 		return name;
 	}
 

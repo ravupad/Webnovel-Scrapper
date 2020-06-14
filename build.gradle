@@ -41,6 +41,7 @@ shadowJar {
 
 run {
 	args = ['run', mainClassName]
+	standardInput = System.in
 }
 
 wrapper {
