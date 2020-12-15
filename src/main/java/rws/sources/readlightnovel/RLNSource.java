@@ -1,12 +1,12 @@
-package rws.readlightnovel;
+package rws.sources.readlightnovel;
 
-import rws.Book;
-import rws.Source;
+import rws.IBook;
+import rws.ISource;
 import java.util.Scanner;
 
-public class RLNSource implements Source {
+public class RLNSource implements ISource {
     @Override
-    public Book selectBook(Scanner scanner) throws Exception {
+    public IBook selectBook(Scanner scanner) throws Exception {
         System.out.print("Enter book url (eg. /god-of-slaughter.html): ");
         var chapterUrl = scanner.nextLine();
         return new RLNBook(chapterUrl);

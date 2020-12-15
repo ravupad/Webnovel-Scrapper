@@ -1,4 +1,4 @@
-package rws.webnovel;
+package rws.sources.webnovel;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import com.google.gson.JsonParser;
 import rws.App;
-import rws.Chapter;
+import rws.IChapter;
 
-public class WebnovelChapter implements Chapter {
+public class WebnovelChapter implements IChapter {
 	String id;
 	String name;
 	int isVip;

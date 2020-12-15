@@ -1,9 +1,9 @@
-package rws.readlightnovel;
+package rws.sources.readlightnovel;
 
-import rws.Book;
+import rws.IBook;
 import java.util.Scanner;
 
-public class RLNBook implements Book {
+public class RLNBook implements IBook {
     RLNChapter chapter;
 
     public RLNBook(String chapterUrl) throws Exception {

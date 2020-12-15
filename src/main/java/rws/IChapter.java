@@ -2,10 +2,10 @@ package rws;
 
 import java.util.List;
 
-public interface Chapter {
+public interface IChapter {
 	String getChapterTitle();
 	
 	List<String> getContent();
 
-	Chapter next() throws Exception;
+	IChapter next() throws Exception;
 }

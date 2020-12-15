@@ -6,15 +6,18 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Scanner;
 
-import rws.readlightnovel.RLNSource;
-import rws.webnovel.WebnovelSource;
-import rws.wuxiaworld.WuxiaSource;
+import rws.sources.ReadNovelFull;
+import rws.sources.RoyalRoad;
+import rws.sources.WuxiaWorldCo;
+import rws.sources.readlightnovel.RLNSource;
+import rws.sources.webnovel.WebnovelSource;
+import rws.sources.wuxiaworld.WuxiaSource;
 
 public class Handler {
 	Scanner scanner;
-	Source source;
-	Book book;
-	Chapter chapter;
+	ISource source;
+	IBook book;
+	IChapter chapter;
 	int chapter_count;
 	Writer out;
 
@@ -28,6 +31,8 @@ public class Handler {
 		System.out.println("2. Webnovel");
 		System.out.println("3. ReadLightNovels");
 		System.out.println("4. WuxiaWorld.Co");
+		System.out.println("5. RoyalRoad");
+		System.out.println("6. ReadNovelFull");
 		System.out.print("Select source: ");
 		int selection = scanner.nextInt();
 		scanner.nextLine();
@@ -44,8 +49,14 @@ public class Handler {
 		case 4:
 			source = new WuxiaWorldCo();
 			break;
+		case 5:
+			source = new RoyalRoad();
+			break;
+		case 6:
+			source = new ReadNovelFull();
+			break;
 		default:
-			System.out.println("Wrong selection of source.");
+			System.out.println("Wrong selection of source: " + selection);
 			throw new Exception();
 		}
 	}
@@ -63,25 +74,17 @@ public class Handler {
 
 	public void fetchChapters() {
 		try {
+			System.out.println("Total chapters to download: " + chapter_count);
 			out = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream(book.getBookTitle() + ".md"), "UTF-8"));
 			var counter = 0;
-			var progress = 0;
 			while (counter < chapter_count) {
 				counter += 1;
+				System.out.println(counter + ". " + chapter.getChapterTitle());
 				writeChapter();
 				chapter = chapter.next();
-				progress = (counter*100)/chapter_count;
-				System.out.print("[");
-				for(int i = 0; i < 100; i++) {
-					if(i <= progress) {
-						System.out.print("=");
-					} else {
-						System.out.print(" ");
-					}
-				}
-				System.out.print("]\r");
 				if (chapter == null) {
+					System.out.println("Next chapter not found");
 					return;					
 				}
 			}

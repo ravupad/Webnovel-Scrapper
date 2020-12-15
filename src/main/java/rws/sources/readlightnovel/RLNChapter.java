@@ -1,12 +1,12 @@
-package rws.readlightnovel;
+package rws.sources.readlightnovel;
 
 import org.jsoup.nodes.Document;
 import rws.App;
-import rws.Chapter;
+import rws.IChapter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RLNChapter implements Chapter {
+public class RLNChapter implements IChapter {
     Document doc;
 
     public RLNChapter(String url) throws Exception {
@@ -32,7 +32,7 @@ public class RLNChapter implements Chapter {
     }
 
     @Override
-    public Chapter next() throws Exception {
+    public IChapter next() throws Exception {
         String href = doc.getElementById("next_chap").attr("href");
         if (href.equals("javascript:void(0)")) return null;
         return new RLNChapter(href);

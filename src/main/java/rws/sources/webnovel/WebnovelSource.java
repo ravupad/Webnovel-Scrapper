@@ -1,4 +1,4 @@
-package rws.webnovel;
+package rws.sources.webnovel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import rws.App;
-import rws.Source;
+import rws.ISource;
 
-public class WebnovelSource implements Source {
+public class WebnovelSource implements ISource {
 	public static final String base_url = "https://www.webnovel.com";
 
 	public List<WebnovelBook> searchBook(String name) {

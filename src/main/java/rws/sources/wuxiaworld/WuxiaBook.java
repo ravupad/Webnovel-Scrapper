@@ -1,12 +1,12 @@
-package rws.wuxiaworld;
+package rws.sources.wuxiaworld;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import org.jsoup.nodes.Document;
-import rws.Book;
+import rws.IBook;
 
-public class WuxiaBook implements Book {
+public class WuxiaBook implements IBook {
 	Document doc;
 	String bookUrl;
     List<WuxiaChapter> chapters;

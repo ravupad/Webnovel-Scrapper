@@ -2,8 +2,8 @@ package rws;
 
 import java.util.Scanner;
 
-public interface Book {	
+public interface IBook {
 	String getBookTitle();
 	
-	Chapter selectChapter(Scanner scanner);
+	IChapter selectChapter(Scanner scanner);
 }

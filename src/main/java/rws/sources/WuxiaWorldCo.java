@@ -1,12 +1,17 @@
-package rws;
+package rws.sources;
 
 import org.jsoup.nodes.Document;
+import rws.App;
+import rws.IBook;
+import rws.IChapter;
+import rws.ISource;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class WuxiaWorldCo implements Source, Book, Chapter {
+public class WuxiaWorldCo implements ISource, IBook, IChapter {
     private Document doc;
     private String url;
 
@@ -18,7 +23,7 @@ public class WuxiaWorldCo implements Source, Book, Chapter {
     }
 
     @Override
-    public Book selectBook(Scanner scanner) throws Exception {
+    public IBook selectBook(Scanner scanner) throws Exception {
         System.out.print("Enter chapter url (eg. https://m.wuxiaworld.co/God-of-Slaughter/1784931.html): ");
         this.url = scanner.nextLine();
         this.doc = App.getDocument(this.url);
@@ -49,7 +54,7 @@ public class WuxiaWorldCo implements Source, Book, Chapter {
     }
 
     @Override
-    public Chapter next() throws Exception {
+    public IChapter next() throws Exception {
         String href = doc.getElementById("pt_next").attr("href");
         if (href.equals("./")) {
             return null;
@@ -62,7 +67,7 @@ public class WuxiaWorldCo implements Source, Book, Chapter {
     }
 
     @Override
-    public Chapter selectChapter(Scanner scanner) {
+    public IChapter selectChapter(Scanner scanner) {
         return this;
     }
 }

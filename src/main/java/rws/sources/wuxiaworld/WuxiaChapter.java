@@ -1,11 +1,11 @@
-package rws.wuxiaworld;
+package rws.sources.wuxiaworld;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import org.jsoup.nodes.Document;
-import rws.Chapter;
+import rws.IChapter;
 
-public class WuxiaChapter implements Chapter {
+public class WuxiaChapter implements IChapter {
 	Document doc;
 	String title;
 	String chapterUrl;

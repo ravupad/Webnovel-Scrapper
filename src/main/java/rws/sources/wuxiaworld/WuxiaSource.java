@@ -1,4 +1,4 @@
-package rws.wuxiaworld;
+package rws.sources.wuxiaworld;
 
 import java.util.Scanner;
 import org.apache.http.client.methods.HttpGet;
@@ -6,9 +6,9 @@ import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import rws.App;
-import rws.Source;
+import rws.ISource;
 
-public class WuxiaSource implements Source {
+public class WuxiaSource implements ISource {
 	public static final String baseUrl = "https://www.wuxiaworld.com";
 
 	public static Document getDocument(String url) {
